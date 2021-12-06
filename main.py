@@ -26,6 +26,32 @@ def nilaiKeanggotaanTekananDarah(type: int, x: float) -> float:
         elif x > 160:
             return 1
 
+def nilaiKeanggotaanIMT(type: int, x: float) -> float:
+    # IMT Underweight
+    if type == 0 :
+        if x <= 15.5:
+            return 1
+        elif 15.5 < x <= 18.5:
+            return (18.5-x)/(18.5-15.5)
+        else:
+            return 0
+    # IMT Normal
+    elif type == 1:
+        if x <= 15.5 or x >= 22.9:
+            return 0
+        elif 15.5 < x <= 20:
+            return (x-15.5)/(20-15.5)
+        elif 20 < x <= 22.9 :
+            return (22.9-x)/(22.9-20)
+    # IMT Overweight
+    else :
+        if x <= 20:
+            return 0
+        elif 20 < x <= 24.9:
+            return (x-20)/(24.9-20)
+        elif x > 24.9:
+            return 1
+
 def nilaiKeanggotaanKadarGlukosaDarah(type: int, x: float) -> float:
     # Kadar Glukosa Darah normal  
     if type == 0:
