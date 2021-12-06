@@ -194,42 +194,49 @@ def getDiagnosis(i: int, j: int, k: int) -> int:
     return tabel_inferensi[key]
 
 def fuzzyInference(tds: float, imt: float, kgd: float):
+    # Mencari nilai keanggotaan untuk masing-masing diagnosis
+    # nk[0] -> nilai kaeanggotaan diagnosis normal
+    # nk[1] -> nilai kaeanggotaan diagnosis pradiabetes
+    # nk[2] -> nilai kaeanggotaan diagnosis diabetes
+
     z = [] # nilai z
     a = [] # nilai alpha predikat
+
     for i in range(3):
         for j in range(3):
             for k in range(3):
-                print(i,j,k)
                 nk_tds = nilaiKeanggotaanTekananDarah(i, tds)
                 nk_imt = nilaiKeanggotaanIMT(j, imt)
-                print("kgd : {}".format(kgd))
                 nk_kgd = nilaiKeanggotaanKadarGlukosaDarah(k, kgd)
-                print(nk_tds, nk_imt, nk_kgd)
+
                 # mencari nilai minimum dari nilai keanggotaan untuk mendapatkan alpha predikat
                 alpha_predikat = min(nk_tds, nk_imt, nk_kgd)
                 a.append(alpha_predikat)
                 diagnosis = getDiagnosis(i, j, k)
-                if diagnosis == 0:
+
+                if diagnosis == 0: # If diagnosis normal
                     nilai_z = 45 - (alpha_predikat*(45-40))
-                    print("alpha: {}".format(alpha_predikat))
-                    print("nilai_z: {}".format(nilai_z))
                     z.append(nilai_z)
-                elif diagnosis == 1:
+                elif diagnosis == 1:  # elif diagnosis pradiabetes
                     nilai_za = 40 + (alpha_predikat*(55-40))
                     nilai_zb = 60 - (alpha_predikat*(60-55))
                     nilai_z = (nilai_za+nilai_zb)/2
                     z.append(nilai_z)
-                else :
+                else : #elif diagnosis diabetes
                     nilai_z = 55 + (alpha_predikat*(100-55))
                     z.append(nilai_z)   
     print(z)
     print(a)
+
     # Defuzzyfikasi
     ap_kali_z = 0
     sum_a = 0
+
+    # Menghitung nilai ap*z dan sum_a
     for i in range(len(z)):
         sum_a += a[i]
         ap_kali_z += z[i]*a[i]
+
     Z = ap_kali_z/sum_a
     print("Z : {}".format(Z))
     nk = [0, 0, 0]
