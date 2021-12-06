@@ -43,7 +43,7 @@ def nilaiKeanggotaanTekananDarah(type: int, x: float) -> float:
             # 1 -> Sedang
             # 2 -> Tinggi
 
-        # Diagnoisis
+        # Diagnosis
             # 0 -> Normal
             # 1 -> Pradiabetes
             # 2 -> Diabetes
@@ -61,8 +61,8 @@ def nilaiKeanggotaanTekananDarah(type: int, x: float) -> float:
         # (0, 2, 2) -> 2
 
         # (1, 0, 0) -> 0
-        # (1, 0, 1) -> 2
-        # (1, 0, 2) -> 1
+        # (1, 0, 1) -> 1
+        # (1, 0, 2) -> 2
         # (1, 1, 0) -> 0
         # (1, 1, 1) -> 1
         # (1, 1, 2) -> 1
