@@ -199,15 +199,20 @@ def fuzzyInference(tds: float, imt: float, kgd: float):
     for i in range(3):
         for j in range(3):
             for k in range(3):
+                print(i,j,k)
                 nk_tds = nilaiKeanggotaanTekananDarah(i, tds)
-                # nk_imt
-                # nk_kgd
+                nk_imt = nilaiKeanggotaanIMT(j, imt)
+                print("kgd : {}".format(kgd))
+                nk_kgd = nilaiKeanggotaanKadarGlukosaDarah(k, kgd)
+                print(nk_tds, nk_imt, nk_kgd)
                 # mencari nilai minimum dari nilai keanggotaan untuk mendapatkan alpha predikat
-                alpha_predikat = min(nk_tds, 100, 100)
+                alpha_predikat = min(nk_tds, nk_imt, nk_kgd)
                 a.append(alpha_predikat)
                 diagnosis = getDiagnosis(i, j, k)
                 if diagnosis == 0:
                     nilai_z = 45 - (alpha_predikat*(45-40))
+                    print("alpha: {}".format(alpha_predikat))
+                    print("nilai_z: {}".format(nilai_z))
                     z.append(nilai_z)
                 elif diagnosis == 1:
                     nilai_za = 40 + (alpha_predikat*(55-40))
@@ -226,6 +231,7 @@ def fuzzyInference(tds: float, imt: float, kgd: float):
         sum_a += a[i]
         ap_kali_z += z[i]*a[i]
     Z = ap_kali_z/sum_a
+    print("Z : {}".format(Z))
     nk = [0, 0, 0]
     nk[0] = nilaiKeanggotaanDiagnosis(0, Z)
     nk[1] = nilaiKeanggotaanDiagnosis(1, Z)
@@ -235,7 +241,13 @@ def fuzzyInference(tds: float, imt: float, kgd: float):
     print("Nilai Keanggotaan Diagnosis Pradiabetes[{}] = {}".format(Z, nk[1]))
     print("Nilai Keanggotaan Diagnosis Diabetes[{}] = {}".format(Z, nk[2]))
 
-    return nk
+    max_value = max(nk)
+    max_idx = nk.index(max_value)
+
+    return {
+        "diagnosis": max_idx,
+        "nk": nk
+    }
         
 if __name__ == "__main__":
     fuzzyInference(187, 0, 0)

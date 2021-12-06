@@ -56,6 +56,18 @@
                             <input type="number" readonly class="form-control" id="nk_kgd" name="nk_kgd" value="{{ nk[2] }}">
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Diagnosis</label>
+                        <div class="col-sm-8">
+                            {% if diagnosis == 0 %}
+                                <input type="text" readonly class="form-control" value="Normal">  
+                            {% elif diagnosis == 1 %}
+                                <input type="text" readonly class="form-control" value="Pradiabetes">  
+                            {% elif diagnosis == 2 %}
+                                <input type="text" readonly class="form-control" value="Diabetes">                                                    
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -12,11 +12,11 @@ def index():
     }
     if request.method == "GET": 
         nk = [0,0,0]
-        return render_template('index.html', data=data, nk=nk)
+        return render_template('index.html', data=data, nk=nk, diagnosis={})
     elif request.method == "POST": 
         data["kgd"] = float(request.form["kgd"])
         data["imt"] = float(request.form["imt"])
         data["tds"] = float(request.form["tds"])
 
-        nk = fuzzyInference(data["tds"], data["imt"], data["kgd"])
-        return render_template('index.html', data=data, nk=nk)
+        fi = fuzzyInference(data["tds"], data["imt"], data["kgd"])
+        return render_template('index.html', data=data, nk=fi['nk'], diagnosis=fi['diagnosis'])
