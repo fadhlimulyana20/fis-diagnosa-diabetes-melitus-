@@ -19,7 +19,7 @@ def nilaiKeanggotaanTekananDarah(type: int, x: float) -> float:
             return (145-x)/(145-132.5)
     # Tekanan darah hipertensi
     else :
-        if x >= 140:
+        if x <= 140:
             return 0
         elif 140 < x <= 160:
             return (x-140)/(160-140)
@@ -174,7 +174,7 @@ def fuzzyInference(tds: float, imt: float, kgd: float):
         sum_a += a[i]
         ap_kali_z += z[i]*a[i]
     Z = ap_kali_z/sum_a
-    nk = []
+    nk = [0, 0, 0]
     nk[0] = nilaiKeanggotaanDiagnosis(0, Z)
     nk[1] = nilaiKeanggotaanDiagnosis(1, Z)
     nk[2] = nilaiKeanggotaanDiagnosis(2, Z)
