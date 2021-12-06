@@ -182,6 +182,8 @@ def fuzzyInference(tds: float, imt: float, kgd: float):
     print("Nilai Keanggotaan Diagnosis Normal[{}] = {}".format(Z, nk[0]))
     print("Nilai Keanggotaan Diagnosis Pradiabetes[{}] = {}".format(Z, nk[1]))
     print("Nilai Keanggotaan Diagnosis Diabetes[{}] = {}".format(Z, nk[2]))
+
+    return nk
         
 if __name__ == "__main__":
     fuzzyInference(187, 0, 0)

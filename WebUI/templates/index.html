@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Diagnosa Diabetes Melitus
+{% endblock title %}
+
+{% block content %}
+    <div class="container py-5">
+        <h2>Aplikasi Diagnosa Diabetes Melitus</h2>
+
+        <div class="py-4 row">
+            <div class="col-md-6">
+                <form action="" method="post" class="border rounded-3 py-3 px-4 shadow-sm">
+                    <h5>Nilai Masukan</h5>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Tekanan Darah Sistolik</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="tds" name="tds" step="0.01" value="{{ data['tds'] }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">IMT</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="imt" name="imt" step="0.01" value="{{ data['imt'] }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Kadar Glukosa Darah</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="kgd" name="kgd" step="0.01" value="{{ data['kgd'] }}">
+                        </div>
+                    </div>
+                    <div class="pt-3">
+                        <button type="submit" class="btn btn-primary">Analisa</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="border rounded-3 py-3 px-4 shadow-sm h-100">
+                    <h5>Hasil Analisa</h5>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Nilai Keanggotaan Diagnosa Normal</label>
+                        <div class="col-sm-8">
+                            <input type="number" readonly class="form-control" id="nk_tds" name="nk_tds" value="{{ nk[0] }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Nilai Keanggotaan Diagnosa Pradiabetes</label>
+                        <div class="col-sm-8">
+                            <input type="number" readonly class="form-control" id="nk_imt" name="nk_imt" value="{{ nk[1] }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Nilai Keanggotaan Diagnosa Diabetes</label>
+                        <div class="col-sm-8">
+                            <input type="number" readonly class="form-control" id="nk_kgd" name="nk_kgd" value="{{ nk[2] }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
