@@ -1,3 +1,5 @@
+# Nilai Keanggotaan
+
 def nilaiKeanggotaanTekananDarah(type: int, x: float) -> float:
     # Tekanan darah normal  
     if type == 0 :
@@ -23,6 +25,60 @@ def nilaiKeanggotaanTekananDarah(type: int, x: float) -> float:
             return (x-140)/(160-140)
         elif x > 160:
             return 1
-    
+
+# Interferensi
+    # Tipe keanggotaan
+        # Tekanan Darah
+            # 0 -> Normal
+            # 1 -> Pra hipertensi
+            # 2 -> Hipertensi
+
+        # IMT
+            # 0 -> Underweight
+            # 1 -> Normal
+            # 2 -> Overweight
+
+        # Kadar Glukosa Darah
+            # 0 -> Normal
+            # 1 -> Sedang
+            # 2 -> Tinggi
+
+        # Diagnoisis
+            # 0 -> Normal
+            # 1 -> Pradiabetes
+            # 2 -> Diabetes
+
+    # Tabel Interferensi
+    # (Tekanan Darah, IMT, Kadar Glukosa Darah) -> Diagnosis
+        # (0, 0, 0) -> 0
+        # (0, 0, 1) -> 0
+        # (0, 0, 2) -> 1
+        # (0, 1, 0) -> 0
+        # (0, 1, 1) -> 1 
+        # (0, 1, 2) -> 2
+        # (0, 2, 0) -> 0
+        # (0, 2, 1) -> 1
+        # (0, 2, 2) -> 2
+
+        # (1, 0, 0) -> 0
+        # (1, 0, 1) -> 2
+        # (1, 0, 2) -> 1
+        # (1, 1, 0) -> 0
+        # (1, 1, 1) -> 1
+        # (1, 1, 2) -> 1
+        # (1, 2, 0) -> 0
+        # (1, 2, 1) -> 2
+        # (1, 2, 2) -> 2
+        
+        # (2, 0, 0) -> 0
+        # (2, 0, 1) -> 1
+        # (2, 0, 2) -> 2
+        # (2, 1, 0) -> 0
+        # (2, 1, 1) -> 1
+        # (2, 1, 2) -> 2
+        # (2, 2, 0) -> 0
+        # (2, 2, 1) -> 1
+        # (2, 2, 2) -> 2 
+
 if __name__ == "__main__":
     print(nilaiKeanggotaanTekananDarah(0, 115.0))
