@@ -2,7 +2,7 @@
 
 def nilaiKeanggotaanTekananDarah(type: int, x: float) -> float:
     # Tekanan darah normal  
-    if type == 0 :
+    if type == 0:
         if x <= 100:
             return 1
         elif 100 < x <= 125:
@@ -15,15 +15,67 @@ def nilaiKeanggotaanTekananDarah(type: int, x: float) -> float:
             return 0
         elif 120 < x <= 132.5:
             return (x-120)/(132.5-120)
-        elif 132.5 < x <= 145 :
+        elif 132.5 < x <= 145:
             return (145-x)/(145-132.5)
     # Tekanan darah hipertensi
-    else :
+    else:
         if x <= 140:
             return 0
         elif 140 < x <= 160:
             return (x-140)/(160-140)
         elif x > 160:
+            return 1
+
+def nilaiKeanggotaanIMT(type: int, x: float) -> float:
+    # IMT Underweight
+    if type == 0 :
+        if x <= 15.5:
+            return 1
+        elif 15.5 < x <= 18.5:
+            return (18.5-x)/(18.5-15.5)
+        else:
+            return 0
+    # IMT Normal
+    elif type == 1:
+        if x <= 15.5 or x >= 22.9:
+            return 0
+        elif 15.5 < x <= 20:
+            return (x-15.5)/(20-15.5)
+        elif 20 < x <= 22.9 :
+            return (22.9-x)/(22.9-20)
+    # IMT Overweight
+    else :
+        if x <= 20:
+            return 0
+        elif 20 < x <= 24.9:
+            return (x-20)/(24.9-20)
+        elif x > 24.9:
+            return 1
+
+def nilaiKeanggotaanKadarGlukosaDarah(type: int, x: float) -> float:
+    # Kadar Glukosa Darah normal  
+    if type == 0:
+        if x <= 44 or x >= 146:
+            return 0
+        elif 44 < x <= 95:
+            return (x-44)/(95-44)
+        elif 95 < x < 146:
+            return (146-x)/(146-95)
+    # Kadar Glukosa Darah sedang
+    elif type == 1:
+        if x <= 141 or x >= 192:
+            return 0
+        elif 141 < x <= 169:
+            return (x-141)/(169-141)
+        elif 169 < x < 192:
+            return (192-x)/(192-169)
+    # Kadar Glukosa Darah tinggi
+    else:
+        if x <= 187:
+            return 0
+        elif 187 < x <= 232:
+            return (232-x)/(232-187)
+        elif x > 232:
             return 1
 
 def nilaiKeanggotaanDiagnosis(type: int, x: float) -> float:
