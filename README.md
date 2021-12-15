@@ -2,13 +2,18 @@
 - Clone Project
 
 - Buat virtual environment untuk python
+- Masuk direktori project
 ```
 cd fis-diagnosa-diabetes-melitus-
-python -m venv .venv
+python -m venv env
 ```
 - Mengaktifkan vrtual environment python.
 ```
-source server/.venv/bin/activate
+# linux
+source env/bin/activate
+
+# Windows
+env\Scripts\Activate.ps1
 ```
 - Download library python yang dibutuhkan
 ```
